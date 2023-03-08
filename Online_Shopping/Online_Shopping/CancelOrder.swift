@@ -8,55 +8,60 @@
 
 
 import Foundation
+
 class CancelOrder
 {
     
-    func orderCancel(receivedOrder : inout [[BillDetails]] , billNumbers : inout [Int] , billConformedUser : inout [UserDetails] , canceledBillNumbers : inout [Int] , billCanceledBydUser : inout [UserDetails] , cancelOrderByUser : inout [[BillDetails]])
+    
+    func orderCancel(billTableDetails : BillTableDetails , userId : String)
     {
-        
-        
-        
-        
-        
-        
         repeat
         {
-            print("Enter the bill number for cancel the order")
-            var number = Int(readLine()!)!
-            var temp = 0
+           
+            let number = UserInput.getBillNumber()
             
-            for billNumber in billNumbers
+            var dateOfDelivery = billTableDetails.checkIsUserBillExists(userId: userId , number : number)
+                        
+            if dateOfDelivery != ""
             {
-                if billNumber == number
-                {
-                    temp = 1
-                    var index = billNumbers.index(of: number)
-                    
-                    canceledBillNumbers.append(billNumbers[index!])
-                    
-                    for position in 0..<billConformedUser.count
-                    {
-                        if position == index
+            
+                        let date = Date()
+                        
+                       
+                         
+                         let formatter = DateFormatter()
+                         formatter.dateFormat = "yyyy/MM/dd HH:mm"
+                         
+                         let deliveryDate = formatter.date(from: dateOfDelivery)
+                         
+                       
+                        if date.timeIntervalSinceReferenceDate < deliveryDate!.timeIntervalSinceReferenceDate
                         {
-                            billCanceledBydUser.append(billConformedUser[position])
-                            cancelOrderByUser.append(receivedOrder[index! + 1])
-                            
+                            billTableDetails.deleteUser(userId: userId, number: number)
+                                    
                         }
-                    }
-                  
-                    billNumbers.remove(at: index!)
-                    receivedOrder.remove(at: index! + 1)
-                    billConformedUser.remove(at: index!)
-                }
+                        else
+                        {
+                            print("Sry your date of cancellation duration is exide")
+                        }
+                
             }
-            
-            if temp == 0
+            else
             {
-                print("Your bill number was not found")
+                print("Check the user name , bill number for cancel the order")
             }
             
-            
-            print("Do you want try again for cancellantion?")
-        }while readLine()! == "Yes"
+        }while UserInput.getCancelOrderContinueOption()
+                
+                
+                
     }
+    
 }
+
+
+
+
+
+
+

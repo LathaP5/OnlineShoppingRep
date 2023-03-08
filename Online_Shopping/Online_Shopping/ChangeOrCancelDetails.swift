@@ -16,8 +16,8 @@ class ChangeOrCancelDetails
             {
                 var temp = 0
                 
-                print("Enter product id for change quantity?")
-                var productId = Int(readLine()!)!
+                
+                let productId = UserInput.getProductId()
                 
                 for product in purchaseOrderDetails
                 {
@@ -26,123 +26,50 @@ class ChangeOrCancelDetails
                         temp = 1
                         
                         print("Enter the quantity?")
-                        var quantity = Int(readLine()!)!
+                        let quantity = Int(readLine()!)!
                         
                         product.quantity = quantity
-                        
+                        print("Your product id is changed")
                     }
                 }
                 if temp == 0
                 {
                     print("You product id was not found , so please try again")
                 }
-                print("Do you want to change another one product quantity?")
-            }while readLine()! == "Yes"
+                let view = View()
+                view.viewOrderedProducts(purchaseOrderDetails : purchaseOrderDetails)
+            }while UserInput.getChangeProductContinueOption()
         }
         
     
-    /*
-    
     func cancelProduct(purchaseOrderDetails : inout [PurchaseOrderDetails])
     {
-
             repeat
             {
                 var temp = 0
+                let productId = UserInput.getProductId()
                 
-                var deleteItem : [Int] = []
-                print("Enter product id to delete?")
-                var productId = Int(readLine()!)!
                 for index in 0..<purchaseOrderDetails.count
                 {
-                    if purchaseOrderDetails[index].productId == productId
-                    {
-                        temp = 1
-                        deleteItem.append(index)
-                    }
+                if purchaseOrderDetails[index].productId == productId
+                {
+                    temp = 1
+                    
+                    purchaseOrderDetails.remove(at : index)
+                    print("Your product id is removed")
+                    break
+                }
                 }
                 if temp == 0
                 {
                     print("You product id was not found , so please try again")
                 }
                 
-                
-                for index in 0..<deleteItem.count
-                {
-                   
-                    if index != 0
-                    {
-                        for change in index..<deleteItem.count
-                        {
-                            deleteItem[change] = deleteItem[change] - 1
-                        }
-                    }
-                 
-                    purchaseOrderDetails.remove(at : deleteItem[index])
-                    
-                
-                    
-                }
-                
-                
-                print("Do you want to delete another one product?")
-            }while readLine()! == "Yes"
+                let view = View()
+                view.viewOrderedProducts(purchaseOrderDetails : purchaseOrderDetails)
+            }while UserInput.getCancelProductContinueOption()
         }
-    
-    */
-    
-    
-    
-    
-    
-    func cancelProduct(purchaseOrderDetails : inout [PurchaseOrderDetails])
-    {
 
-            repeat
-            {
-                var temp = 0
-                
-                var deleteItem : [Int] = []
-                print("Enter product id to delete?")
-                var productId = Int(readLine()!)!
-                for index in 0..<purchaseOrderDetails.count
-                {
-                    if purchaseOrderDetails[index].productId == productId
-                    {
-                        temp = 1
-                        deleteItem.append(index)
-                    }
-                }
-                if temp == 0
-                {
-                    print("You product id was not found , so please try again")
-                }
-                
-                
-                for index in 0..<deleteItem.count
-                {
-                   
-                    if index != 0
-                    {
-                        for change in index..<deleteItem.count
-                        {
-                            deleteItem[change] = deleteItem[change] - 1
-                        }
-                    }
-                 
-                    purchaseOrderDetails.remove(at : deleteItem[index])
-                    
-                
-                    
-                }
-                
-                
-                print("Do you want to delete another one product?")
-            }while readLine()! == "Yes"
-        }
-    
-    
-   
     
      
 }

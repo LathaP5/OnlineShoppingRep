@@ -4,32 +4,17 @@ import Foundation
 
 enum LoginFormValidationError : Error
 {
-    case emptyUserName
-    case emptyPassword
-    case emptyEmail
-    case invalidPasswordLength
-    case notFoundUserNameAndPassword
-    case incorrectAdminUserNameAndPassword
-    case notFoundUserNameAndEmail
+    case notFoundUserIdAndPassword
+    case notFoundUserId
     
     var errorMessage : String
     {
         switch self
         {
-        case .emptyUserName:
-            return "Please enter user name"
-        case .emptyPassword:
-            return "Please enter a password"
-        case .emptyEmail:
-            return "Please enter a email"
-        case .invalidPasswordLength:
-            return "Please enter a password with correct length"
-        case .notFoundUserNameAndPassword:
-            return "Please check the user name and password or to create sign up account first"
-        case .incorrectAdminUserNameAndPassword:
-            return "Please check the admin user name and password"
-        case .notFoundUserNameAndEmail:
-            return "Please check the user name and email"
+        case .notFoundUserIdAndPassword:
+            return "Please check the user id and password or to create sign up account first"
+        case .notFoundUserId:
+            return "Please check the user Id"
         }
     }
 }
@@ -38,126 +23,119 @@ enum LoginFormValidationError : Error
 
 class LoginForm
 {
-    func checkUserDetails(userDetails : [UserDetails] , userName : String , password : String)throws
+    func checkUserDetail(userDetails : UserTableDetails , userId : String , password : String)throws
     {
-        
-        guard userName != "" else
-        {
-            throw LoginFormValidationError.emptyUserName
-        }
-        
-        guard password != "" else
-        {
-            throw LoginFormValidationError.emptyPassword
-        }
-    
-        guard password.count == 5  else
-        {
-            throw LoginFormValidationError.invalidPasswordLength
-        }
-        
-        
         var temp : Int = 0
-        
-        for details in userDetails
+        if userDetails.checkUserIdAndPasasword(userId: userId, password: password)
         {
-            if details.userName == userName && details.password == password
-            {
                 temp = 1
-                print("User login successfully")
-                print("welcome to user home page")
-                
-            }
+                View.showUserLoginSuccessMessage()
         }
 
         guard temp == 1 else
         {
-            throw LoginFormValidationError.notFoundUserNameAndPassword
+            throw LoginFormValidationError.notFoundUserIdAndPassword
         }
         
     }
     
-    func checkAdminDetails(userName : String , password : String)throws
+    
+    
+    func checkAdminDetail(adminDetails : AdminTableDetails , userId : String , password : String)throws
     {
-        
-        guard userName != "" else
-        {
-            throw LoginFormValidationError.emptyUserName
-        }
-        
-        guard password != "" else
-        {
-            throw LoginFormValidationError.emptyPassword
-        }
-    
-        guard password.count == 5  else
-        {
-            throw LoginFormValidationError.invalidPasswordLength
-        }
-        
-        guard  userName == "admin" && password == "12345" else
-        {
-            throw LoginFormValidationError.incorrectAdminUserNameAndPassword
-        }
-        
-        print("Admin login successfully")
-        print("welcome to admin home page")
-    }
-    
-    
-    func checkForgotDetails(userDetails : [UserDetails] , userName: String , email : String)throws
-    {
-        guard userName != "" else
-        {
-            throw LoginFormValidationError.emptyUserName
-        }
-        
-        guard email != "" else
-        {
-            throw LoginFormValidationError.emptyEmail
-        }
-        
-        
         var temp : Int = 0
-        
-        for details in userDetails
+        if adminDetails.checkUserIdAndPasasword(userId: userId, password: password)
         {
-            if details.userName == userName && details.email == email
-            {
                 temp = 1
-                func checkSecurityQuestionAnswer()
-                {
-                    print(details.securityQuestion)
-                    let answer = readLine()!
-                    
-                    if answer == details.answer
-                    {
-                        print("Enter the new password")
-                        details.password = readLine()!
-                    }
-                    else
-                    {
-                        print("Your security question ans was wrong")
-                        print("Do you want try again?")
-                        if readLine()! == "Yes"
-                        {
-                            checkSecurityQuestionAnswer()
-                        }
-                    }
-                }
-                checkSecurityQuestionAnswer()
-            }
+                View.showAdminLoginSuccessMessage()
         }
 
         guard temp == 1 else
         {
-            throw LoginFormValidationError.notFoundUserNameAndEmail
+            throw LoginFormValidationError.notFoundUserIdAndPassword
+        }
+        
+    }
+    
+    
+    func checkDestributorDetail(distributorDetails : DistributorTableDetails , userId : String , password : String)throws
+    {
+        var temp : Int = 0
+        if distributorDetails.checkUserIdAndPasasword(userId: userId, password: password)
+        {
+                temp = 1
+                View.showDistributorLoginSuccessMessage()
+        }
+
+        guard temp == 1 else
+        {
+            throw LoginFormValidationError.notFoundUserIdAndPassword
+        }
+        
+    }
+    
+    
+    func checkForgotDetails(userDetails : UserTableDetails , userId: String)throws
+    {
+       
+            var temp = 0
+        
+            if userDetails.checkUserId(userId: userId)
+            {
+                temp = 1
+                userDetails.updatePassword(userId : userId)
+            }
+
+            guard temp == 1 else
+            {
+            throw LoginFormValidationError.notFoundUserId
             
-        }
+            }
+     
+    }
+    
+    
+    func checkForgotDetails(adminDetails : AdminTableDetails , userId: String)throws
+    {
+       
+            var temp = 0
         
+            if adminDetails.checkUserId(userId: userId)
+            {
+                temp = 1
+                adminDetails.updatePassword(userId : userId)
+            }
+
+            guard temp == 1 else
+            {
+            throw LoginFormValidationError.notFoundUserId
+            
+            }
+     
+    }
+    
+    func checkForgotDetails(distributorDetails: DistributorTableDetails, userId: String)throws
+    {
+        
+        var temp = 0
+    
+        if distributorDetails.checkUserId(userId: userId)
+        {
+            temp = 1
+            distributorDetails.updatePassword(userId : userId)
+        }
+
+        guard temp == 1 else
+        {
+        throw LoginFormValidationError.notFoundUserId
+        }
         
     }
     
     
-}
-
+    }
+    
+    
+    
+    
+   

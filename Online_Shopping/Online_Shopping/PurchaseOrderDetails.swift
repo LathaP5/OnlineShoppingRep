@@ -7,13 +7,15 @@
 
 import Foundation
 
-class PurchaseOrderDetails
+class PurchaseOrderDetails : Product
 {
+    var productId: Int = 0
     
-    var productId : Int = 0
-    var productName : String = ""
-    var category : String = ""
-    var price : Int = 0
-
+    var productName: String = ""
+    
+    var category: String = ""
+    
+    var price: Int = 0
+  
     var quantity : Int = 0
 }

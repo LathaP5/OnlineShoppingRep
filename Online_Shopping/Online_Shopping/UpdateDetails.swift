@@ -9,24 +9,33 @@ import Foundation
 
 class UpdateDetails
 {
-    func updateProduct(oldProductId : Int , oldProductName : String , newPrice : Int , newActive : String , productDetails : [ProductDetails])
+    
+    
+    
+    func updateProduct(oldProductId : Int , productDetails : ProductTableDetails , productIds : [Int])
     {
         var temp = 0
-     
-        for product in productDetails
+        for productId in 0..<productIds.count
         {
-            if product.productId == oldProductId && product.productName == oldProductName
+            if productIds[productId] == oldProductId
             {
                 temp = 1
-                product.price = newPrice
-                product.active = newActive
-                
-                print("The given product id and product name was updated")
             }
         }
-        if temp == 0
+        
+        if temp == 1
         {
-            print("The given product id and product name does not exists so please try again")
+            var newPrice = UserInput.getPrice()
+            var newActive = UserInput.getActive()
+            productDetails.UpdateProductIdDetails(oldProductId : oldProductId , newPrice: newPrice, newActive: newActive)
+        }
+        else
+        {
+            print("Your productId was not found for update")
         }
     }
+        
 }
+
+
+

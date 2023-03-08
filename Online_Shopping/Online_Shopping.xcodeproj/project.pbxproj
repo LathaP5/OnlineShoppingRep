@@ -19,6 +19,14 @@
 		173C8D0F299E120900119A40 /* GenerateBill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C8D0E299E120900119A40 /* GenerateBill.swift */; };
 		173C8D11299E15FA00119A40 /* BillDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C8D10299E15FA00119A40 /* BillDetails.swift */; };
 		173C8D15299E39CC00119A40 /* CancelOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C8D14299E39CC00119A40 /* CancelOrder.swift */; };
+		1777D34729A741E500E3F0DD /* OnllineShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D34629A741E500E3F0DD /* OnllineShopping.swift */; };
+		1777D37429A9EAD000E3F0DD /* UserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37329A9EAD000E3F0DD /* UserInput.swift */; };
+		1777D37629AB47C700E3F0DD /* AdminDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37529AB47C700E3F0DD /* AdminDetails.swift */; };
+		1777D37829AB557A00E3F0DD /* AdminProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37729AB557A00E3F0DD /* AdminProductDetails.swift */; };
+		1777D37A29ADEA5100E3F0DD /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37929ADEA5100E3F0DD /* Filter.swift */; };
+		1777D37C29AF221C00E3F0DD /* SqliteDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37B29AF221C00E3F0DD /* SqliteDatabase.swift */; };
+		1777D38029B5B8DC00E3F0DD /* DistributorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D37F29B5B8DC00E3F0DD /* DistributorDetails.swift */; };
+		1777D38229B5D1D300E3F0DD /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1777D38129B5D1D300E3F0DD /* Validation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +55,14 @@
 		173C8D0E299E120900119A40 /* GenerateBill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBill.swift; sourceTree = "<group>"; };
 		173C8D10299E15FA00119A40 /* BillDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillDetails.swift; sourceTree = "<group>"; };
 		173C8D14299E39CC00119A40 /* CancelOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrder.swift; sourceTree = "<group>"; };
+		1777D34629A741E500E3F0DD /* OnllineShopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnllineShopping.swift; sourceTree = "<group>"; };
+		1777D37329A9EAD000E3F0DD /* UserInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInput.swift; sourceTree = "<group>"; };
+		1777D37529AB47C700E3F0DD /* AdminDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminDetails.swift; sourceTree = "<group>"; };
+		1777D37729AB557A00E3F0DD /* AdminProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProductDetails.swift; sourceTree = "<group>"; };
+		1777D37929ADEA5100E3F0DD /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		1777D37B29AF221C00E3F0DD /* SqliteDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SqliteDatabase.swift; sourceTree = "<group>"; };
+		1777D37F29B5B8DC00E3F0DD /* DistributorDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributorDetails.swift; sourceTree = "<group>"; };
+		1777D38129B5D1D300E3F0DD /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,14 @@
 				173C8D0E299E120900119A40 /* GenerateBill.swift */,
 				173C8D10299E15FA00119A40 /* BillDetails.swift */,
 				173C8D14299E39CC00119A40 /* CancelOrder.swift */,
+				1777D34629A741E500E3F0DD /* OnllineShopping.swift */,
+				1777D37329A9EAD000E3F0DD /* UserInput.swift */,
+				1777D37529AB47C700E3F0DD /* AdminDetails.swift */,
+				1777D37729AB557A00E3F0DD /* AdminProductDetails.swift */,
+				1777D37929ADEA5100E3F0DD /* Filter.swift */,
+				1777D37B29AF221C00E3F0DD /* SqliteDatabase.swift */,
+				1777D37F29B5B8DC00E3F0DD /* DistributorDetails.swift */,
+				1777D38129B5D1D300E3F0DD /* Validation.swift */,
 			);
 			path = Online_Shopping;
 			sourceTree = "<group>";
@@ -154,16 +178,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				173C8D15299E39CC00119A40 /* CancelOrder.swift in Sources */,
+				1777D34729A741E500E3F0DD /* OnllineShopping.swift in Sources */,
+				1777D37C29AF221C00E3F0DD /* SqliteDatabase.swift in Sources */,
+				1777D38029B5B8DC00E3F0DD /* DistributorDetails.swift in Sources */,
 				173C8CF2299CB08600119A40 /* UpdateDetails.swift in Sources */,
 				173C8CE1299BA4F200119A40 /* main.swift in Sources */,
+				1777D37829AB557A00E3F0DD /* AdminProductDetails.swift in Sources */,
+				1777D37429A9EAD000E3F0DD /* UserInput.swift in Sources */,
 				173C8CFA299D076D00119A40 /* PurchaseOrderDetails.swift in Sources */,
+				1777D37A29ADEA5100E3F0DD /* Filter.swift in Sources */,
 				173C8CF8299CE67400119A40 /* ChangeOrCancelDetails.swift in Sources */,
 				173C8CF4299CBC5300119A40 /* View.swift in Sources */,
 				173C8CF6299CCD2700119A40 /* OrderDetails.swift in Sources */,
 				173C8CE8299BA54B00119A40 /* LoginForm.swift in Sources */,
 				173C8CEC299BA5AA00119A40 /* ProductDetails.swift in Sources */,
+				1777D37629AB47C700E3F0DD /* AdminDetails.swift in Sources */,
 				173C8D11299E15FA00119A40 /* BillDetails.swift in Sources */,
 				173C8CEA299BA58F00119A40 /* UserDetails.swift in Sources */,
+				1777D38229B5D1D300E3F0DD /* Validation.swift in Sources */,
 				173C8D0F299E120900119A40 /* GenerateBill.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
